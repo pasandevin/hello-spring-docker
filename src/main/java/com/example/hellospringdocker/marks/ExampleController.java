@@ -19,8 +19,9 @@ public class ExampleController {
     }
 
     @GetMapping("putmarks")
-    public void getMarksForUser() {
+    public String getMarksForUser() {
         Mark mark = new Mark("Krishan", 80);
         markRepository.save(mark);
+        return markRepository.findAll().toString();
     }
 }

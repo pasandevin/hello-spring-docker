@@ -1,0 +1,12 @@
+version: "3"
+services:
+  app-db:
+    image: mysql
+    environment:
+        MYSQL_ROOT_PASSWORD: "root"
+        MYSQL_DATABASE: "mark-db"
+  spring-app:
+    build: .
+    ports: ["8080:8080"]
+    depends_on:
+      - app-db
