@@ -5,9 +5,9 @@ EXPOSE 8080
 
 RUN mkdir "/app"
 
-COPY ./out/artifacts/hello_spring_docker_jar/hello-spring-docker.jar app/hello-spring-docker.jar
+COPY ./target/hello-spring-docker-0.0.1-SNAPSHOT.jar app/hello-spring-docker-0.0.1-SNAPSHOT.jar
 
 WORKDIR /app
 
-ENTRYPOINT ["java","-jar","hello-spring-docker.jar"]
+ENTRYPOINT ["java","-jar","hello-spring-docker-0.0.1-SNAPSHOT.jar"]
 
