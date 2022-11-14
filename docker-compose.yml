@@ -3,10 +3,15 @@ services:
   app-db:
     image: mysql
     environment:
-        MYSQL_ROOT_PASSWORD: "root"
-        MYSQL_DATABASE: "mark-db"
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "mark-db"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 20s
+      timeout: 10s
   spring-app:
     build: .
     ports: ["8080:8080"]
     depends_on:
-      - app-db
+      app-db:
+        condition: service_healthy
